@@ -24,8 +24,7 @@ def process_api():
     log_message = generate_log()
     print(f"Log: {log_message}")  
 
-    # TODO: Update the log path
-    log_directory = '/configured_path'
+    log_directory = '/var/log/data-api/'
     if not os.path.exists(log_directory):
         os.makedirs(log_directory)
     

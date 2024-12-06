@@ -26,7 +26,7 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
         {{- if .Values.additionalLabels }}
-        {{- toYaml .Values.additionalLabels | nindent 4 }}
+        {{- toYaml .Values.additionalLabels | nindent 8 }}
         {{- end }}
     spec:
       {{- with .Values.imagePullSecrets }}

@@ -96,3 +96,9 @@ env:
     secretKeyRef:
       name: external-api-key
       key: api-key
+
+secrets:
+  externalApiKey:
+    name: external-api-key
+    data:
+      api_key: "your-api-key-value"

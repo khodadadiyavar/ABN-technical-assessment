@@ -91,14 +91,17 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 env:
-- name: EXTERNAL_API_ENV_KEYS
+- name: EXTERNAL_STAGE_KEY
   valueFrom:
     secretKeyRef:
       name: external-api-key
-      key: api-key
+      key: api_key
 
 secrets:
   externalApiKey:
     name: external-api-key
     data:
       api_key: "your-api-key-value"
+
+external_svc:
+  name: external-service

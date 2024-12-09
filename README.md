@@ -18,7 +18,7 @@ NAMESPACE: default
 STATUS: deployed
 REVISION: 1
 ```
-4- You can configr the installation progress using the below command:
+4- You can confirm the installation progress using the below command:
 ```bash
 kubectl -n <namespace> get deployments
 ```
@@ -55,7 +55,12 @@ To display resource utilization for pods with a specific label, such as k8s-app=
 kubectl top pods --selector=k8s-app=kube-Devops
 ```
 Sample output:
-```NAME                       CPU(cores)   MEMORY(bytes)
-kube-devops-pod1           50m          128Mi
-kube-devops-pod2           60m          150Mi
+```bash
+NAME                           CPU(cores)   MEMORY(bytes)
+backend-api-54d86f48d9-7rjcx   8m           86Mi
+data-api-6d678f9d78-tmh5z      32m          48Mi
 ```
+
+### Secret management
+
+The backend_api app connects to an external API, and for that it uses an API key. The best way to store these keys is to use a Secret Manager service that integrates with Kubernetes. I suggest using AWS secrets manager as it support automatic secret rotation and update.

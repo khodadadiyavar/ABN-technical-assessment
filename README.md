@@ -72,4 +72,4 @@ I also included the manifest of a pod that automatically checks the health of th
 
 ### Ansible playbook
 
-This repo also includes an Ansible play bood that makes sure that the `helm` binary is available, and deploys the helm charts.
+This repo also includes an Ansible play bood that makes sure that the `helm` binary is available, and deploys the helm charts and validates the deployment.

@@ -1,0 +1,17 @@
+- name: Create Kubernetes namespace
+  community.kubernetes.k8s:
+    api_version: v1
+    kind: Namespace
+    name: abn-amro
+
+- name: Deploy Helm chart for backend-api
+  ansible.builtin.command:
+    cmd: >
+      helm upgrade --install backend-api ./backend-api --namespace abn-amro --set externalIntegrationKey={{ integration_key }} --set environment={{ environment }}
+    chdir: ../../../../helm/
+
+- name: Deploy Helm chart for data-api
+  ansible.builtin.command:
+    cmd: >
+      helm upgrade --install data-api ./data-api --namespace abn-amro
+    chdir: ../../../../helm/

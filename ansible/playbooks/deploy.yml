@@ -1,0 +1,6 @@
+- hosts: localhost
+  tasks:
+    - import_role:
+        name: helm
+    - import_role:
+        name: deploy-helm

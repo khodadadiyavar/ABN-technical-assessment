@@ -1,0 +1,10 @@
+- name: Check Pods Status
+  community.kubernetes.k8s_info:
+    api_version: v1
+    kind: Pod
+    namespace: my-namespace
+  register: pod_info
+
+- name: Debug pod information
+  ansible.builtin.debug:
+    var: pod_info.resources

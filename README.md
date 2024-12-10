@@ -64,3 +64,12 @@ data-api-6d678f9d78-tmh5z      32m          48Mi
 ### Secret management
 
 The backend_api app connects to an external API, and for that it uses an API key. The best way to store these keys is to use a Secret Manager service that integrates with Kubernetes. I suggest using AWS secrets manager as it support automatic secret rotation and update.
+
+### Healthcheck
+
+You can find a script to check the status of the backend API in the new infrastructure. Although I beleive the way I implemented it you won't be needing such script. The helm chart deploys a deployment that has a K8s readiness check and a liveness check which can be traked via the K8s API or any alert mnaagement system.
+I also included the manifest of a pod that automatically checks the health of the backend API and prints the status to the output, this also ca be traked and logged using apporopraite logging tools. The pod also can be used as a cron job so it does not run all the time if you're looking for a scheduled health check.
+
+### Ansible playbook
+
+This repo also includes an Ansible play bood that makes sure that the `helm` binary is available, and deploys the helm charts.

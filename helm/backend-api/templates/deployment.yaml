@@ -68,6 +68,12 @@ spec:
           {{- end }}
       {{- with .Values.volumes }}
       volumes:
+        - name: {{ .Values.secrets.externalApiKey.name}}
+          csi:
+              driver: secrets-store.csi.k8s.io
+              readOnly: true
+              volumeAttributes:
+                  secretProviderClass: {{ .Values.Labels.Secrets | quote }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
       {{- with .Values.nodeSelector }}
